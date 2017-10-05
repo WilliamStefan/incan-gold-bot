@@ -69,7 +69,7 @@ public class EchoApplication {
             throws Exception {
         String text = content.getText();
 
-        // log.info("Got text message from {}: {}", replyToken, text);
+//        log.info("Got text message from {}: {}", replyToken, text);
         switch (text) {
             case ".players": {
                 String userId = event.getSource().getUserId();
@@ -79,6 +79,7 @@ public class EchoApplication {
                             .whenComplete((profile, throwable) -> {
                                 if (throwable != null) {
                                     this.replyText(replyToken, throwable.getMessage());
+                                    this.replyText(replyToken, "List of players: ");
                                     return;
                                 }
 
@@ -98,7 +99,7 @@ public class EchoApplication {
             }
 
             default:
-                // log.info("Returns echo message {}: {}", replyToken, text);
+//                log.info("Returns echo message {}: {}", replyToken, text);
                 this.replyText(
                         replyToken,
                         text
